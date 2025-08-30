@@ -1,10 +1,14 @@
 # AVA-02 // Classes, Objetos, Encapsulamento, Igualdade e Comparabilidade
 
+Definir a classe `Fração` e definir o comportamento do objeto de acordo com os testes a seguir.
+
+Faça uma parte de cada vez, não cole o bloco inteiro no Program.cs!
+
 **Casos de Teste:**
 
 ```csharp
 var f1 = new Fracao(5, 10);
-Console.WriteLine(f1.Numerador == 1);
+Console.WriteLine(f1.Numerador == 1); // True
 Console.WriteLine(f1.Denominador == 2);
 Console.WriteLine(f1.ToString() == "1/2");
 Console.WriteLine(f1); // 1/2
@@ -12,7 +16,7 @@ Console.WriteLine(f1); // 1/2
 var f2 = new Fracao(3); // 3 inteiros
 Console.WriteLine(f2); // "3/1"
 
-var f3 = new Fracao("30/40");
+var f3 = new Fracao("30/40"); // Necessário fazer o split e parse da string, ver "".Split e int.Parse
 Console.WriteLine(f3.Numerador == 3);
 Console.WriteLine(f3.Denominador == 4);
 Console.WriteLine(f3); // "3/4"
@@ -60,7 +64,7 @@ Console.WriteLine(f12.Equals(f14)); // false
 Console.WriteLine(f12 == f14); // false
 Console.WriteLine(f12 != f14); // true
 
-Console.WriteLine(f14 == f15); // true
+Console.WriteLine(f12 == f15); // true
 Console.WriteLine(f13 == f14); // true
 
 Console.WriteLine(new Fracao("3/19").Equals(new Fracao(3, 19))); // true
@@ -71,7 +75,10 @@ var f16 = new Fracao(2, 12);
 var f17 = new Fracao(3, 4);
 var f18 = new Fracao(9, 10);
 var f19 = new Fracao(5);
-var f20 = new Fracao(18, 24);
+var f20 = new Fracao(24, 18);
+var f21 = new Fracao(16, 8);
+var f22 = new Fracao(1, 8);
+var f23 = new Fracao(10, 80);
 
 // Todas estas assertivas devem imprimir true
 Console.WriteLine(f16 < f17);
@@ -79,7 +86,28 @@ Console.WriteLine(f18 > f17);
 Console.WriteLine(f19 > f18);
 Console.WriteLine(f12 >= f15);
 Console.WriteLine(f16 < f20);
+
+// Consultas:
+Console.WriteLine(f16.IsImpropria); // False
+Console.WriteLine(f16.IsPropria); // True
+Console.WriteLine(f20.IsImpropria); // True
+Console.WriteLine(f20.IsAparente); // False
+Console.WriteLine(f21.IsPropria); // False
+Console.WriteLine(f21.IsAparente); // True
+Console.WriteLine(f21.IsUnitaria); // False
+Console.WriteLine(f22.IsUnitaria); // True
+Console.WriteLine(f23.IsUnitaria); // True
+
+// O que acontece se:
+var f24 = new Fracao(5, 0);
+// Usar ArgumentOutOfRangeException.ThrowIf... e impedir a instanciação!
+// Pesquisar sobre.
 ```
 
 ---
-Obs.: os casos de teste não podem ser alterados, mas outros podem ser adicionados. Fique a vontade para adicionar códigos que imprimem ou separam os testes, por exemplo.
+Observações: 
+
+- Os casos de teste não podem ser alterados, mas outros podem ser adicionados. Fique a vontade para adicionar códigos que imprimem ou separam os testes, por exemplo.
+- Serão necessários os cálculos do MMC e MDC para algumas operações (podes usar o que já está pronto do trabalho anterior).
+- A escrita dos operações de comparação segue o mesmo padrão e regras do `==` e `!=`.
+
